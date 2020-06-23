@@ -6,6 +6,16 @@ function userJoin(id, username, room) {
   return user;
 }
 
+function changeUserRoom(id, username, room) {
+  const index = users.findIndex(user => user.id === id);
+  if (index !== -1) {
+    users.splice(index, 1);
+    const user = { id, username, room };
+    users.push(user);
+    return user;
+  }
+}
+
 function getCurrentUser(id) {
   return users.find(user => user.id)
 }
@@ -26,5 +36,6 @@ module.exports = {
   userJoin,
   getCurrentUser,
   userLeave,
-  getRoomUsers
+  getRoomUsers,
+  changeUserRoom
 };
